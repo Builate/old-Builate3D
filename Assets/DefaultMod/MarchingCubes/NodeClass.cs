@@ -1,0 +1,20 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[Serializable]
+public class Node
+{
+    /// <summary>
+    /// ÉpÉèÅ[
+    /// 0Ç©ÇÁ1Ç‹Ç≈ÇÃä‘Ç≈Ç‚ÇÈ
+    /// </summary>
+    [Range(0,1)]
+    public float p;
+
+    public Node()
+    {
+        p = 0;
+    }
+}
