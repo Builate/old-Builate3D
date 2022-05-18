@@ -13,11 +13,9 @@ namespace KYapp.Builate
         }
         public override void Start()
         {
-            Camera.main.gameObject.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = gameObject.transform;
-
             CharacterController cc = gameObject.AddComponent<CharacterController>();
             PlayerController pc = gameObject.AddComponent<PlayerController>();
-            GameObject go = GameObject.Instantiate(DefaultModResource.Instance.PlayerModelPrefab);
+            GameObject go = GameObject.Instantiate(SystemModResource.Instance.PlayerModelPrefab);
             go.transform.SetParent(gameObject.transform);
             go.transform.localPosition = Vector3.zero;
 
@@ -36,6 +34,8 @@ namespace KYapp.Builate
             pc.Velocity = new Vector3(0, 0, 0);
 
             gameObject.transform.position = new Vector3(0, 10, 0);
+
+            Data.mod.CreateEntity(1).EntityBase.gameObject.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = gameObject.transform;
         }
 
         public override void Update()

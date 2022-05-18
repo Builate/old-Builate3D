@@ -35,18 +35,19 @@ namespace KYapp.Builate
             {
                 ModEntityDataList[i].Data.EntityDataID.Item2 = i;
                 ModEntityDataList[i].Data.EntityDataID.Item1 = modID;
+                ModEntityDataList[i].Data.mod = this;
                 EntityData.AddEntityData(ModEntityDataList[i]);
             }
         }
 
-        public void CreateEntity(int id)
+        public Entity CreateEntity(int id)
         {
-            EntityData.CreateEntity((modID, id));
+            return EntityData.CreateEntity((modID, id));
         }
 
-        public void CreateEntity(string modId,int id)
+        public Entity CreateEntity(string modId,int id)
         {
-            EntityData.CreateEntity((modID, id));
+            return EntityData.CreateEntity((modId, id));
         }
     }
 }

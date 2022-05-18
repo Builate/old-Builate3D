@@ -7,8 +7,9 @@ public class DefaultMod : Mod
 {
     public override void Init()
     {
-        modID = "DefaultMod";
+        modID = "SystemMod";
         ModEntityDataList.Add(new PlayerEntity());
+        ModEntityDataList.Add(new CameraEntity());
     }
 
     public override void Start()

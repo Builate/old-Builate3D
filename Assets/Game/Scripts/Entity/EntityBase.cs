@@ -42,5 +42,6 @@ namespace KYapp.Builate
         public (string, int) EntityDataID;
         public Mesh mesh;
         public Material material;
+        public Mod mod;
     }
 }
