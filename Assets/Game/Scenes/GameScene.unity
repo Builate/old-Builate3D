@@ -169,7 +169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerModelPrefab: {fileID: 6765297297125672025, guid: 62fd9b380ec28e74ea0607558d70f7d9,
     type: 3}
-  PlayerCam1: {fileID: 0}
+  PlayerCam1: {fileID: 1004453840587165593, guid: 9c17dba7e46d590459042a461706303b,
+    type: 3}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0.4288563, y: -0, z: -0, w: 0.9033727}
-  m_LocalPosition: {x: 1.3113908, y: 12.628705, z: -6.5635023}
+  m_LocalPosition: {x: -25.950718, y: 0, z: 85.69553}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
