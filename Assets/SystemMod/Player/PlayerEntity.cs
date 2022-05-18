@@ -34,9 +34,6 @@ namespace KYapp.Builate
             pc.Velocity = new Vector3(0, 0, 0);
 
             gameObject.transform.position = new Vector3(0, 10, 0);
-            /*
-            Entity CameraEntity = Data.mod.CreateEntity(1);
-            CameraEntity.EntityBase.gameObject.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = gameObject.transform;*/
         }
 
         public override void Update()

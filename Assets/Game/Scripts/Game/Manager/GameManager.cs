@@ -10,10 +10,10 @@ namespace KYapp.Builate
         // Start is called before the first frame update
         void Start()
         {
-            Mod defmod = new DefaultMod();
-            defmod.Init();
-            defmod.SetEntityData();
-            defmod.Start();
+            Mod sysmod = new SystemMod();
+            sysmod.Init();
+            sysmod.SetEntityData();
+            sysmod.Start();
         }
 
         // Update is called once per frame

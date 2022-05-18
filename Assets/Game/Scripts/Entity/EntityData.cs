@@ -37,7 +37,12 @@ namespace KYapp.Builate
 
         public static void Update()
         {
+            List<Entity> values = new List<Entity>();
             foreach (var item in EntityList.Values)
+            {
+                values.Add(item);
+            }
+            foreach (var item in values)
             {
                 item.Update();
             }
