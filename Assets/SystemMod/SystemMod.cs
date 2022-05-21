@@ -3,17 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using KYapp.Builate;
 
-public class SystemMod : Mod
+namespace KYapp.Builate
 {
-    public override void Init()
+    public enum SystemModEntityData
     {
-        modID = "SystemMod";
-        ModEntityDataList.Add(new CameraEntity());
-        ModEntityDataList.Add(new PlayerEntity());
+        [EntityData(typeof(CameraEntity), "Camera")]
+        CameraEntity,
+        [EntityData(typeof(PlayerEntity), "Player")]
+        PlayerEntity,
     }
 
-    public override void Start()
+    public class SystemMod : Mod
     {
-        CreateEntity(0);
+        public override void Init()
+        {
+            modID = "SystemMod";
+        }
+
+        public override void Start()
+        {
+            CreateEntity(0);
+        }
     }
+
 }

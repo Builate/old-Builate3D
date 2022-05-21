@@ -38,10 +38,18 @@ namespace KYapp.Builate
 
     public class EntityBaseData
     {
+        /// <summary>
+        /// Entity‚ÌName
+        /// ˆêˆÓ‚Å‚ ‚é•K—v‚Í‚È‚¢
+        /// </summary>
         public string Name;
+        /// <summary>
+        /// (modID,entityDataID)
+        /// </summary>
         public (string, int) EntityDataID;
-        public Mesh mesh;
-        public Material material;
+        /// <summary>
+        /// emod
+        /// </summary>
         public Mod mod;
     }
 }

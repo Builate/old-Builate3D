@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,16 +7,14 @@ namespace KYapp.Builate
 {
     /// <summary>
     /// 全てのModが継承するクラス
+    /// EntityDataを宣言するにはEntityDataというEnum型の変数を定義します。
     /// </summary>
     public abstract class Mod
     {
-        public string modID;
-
         /// <summary>
-        /// Entityを羅列してある
-        /// Entityの元データ
+        /// modIDは一意である必要があります
         /// </summary>
-        public static List<EntityBase> ModEntityDataList = new List<EntityBase>();
+        public string modID;
 
         /// <summary>
         /// ワールドのロード時に呼ばれる設定用メソッドです
@@ -29,16 +28,6 @@ namespace KYapp.Builate
         /// </summary>
         public abstract void Start();
 
-        public void SetEntityData()
-        {
-            for (int i = 0; i < ModEntityDataList.Count; i++)
-            {
-                ModEntityDataList[i].Data.EntityDataID.Item2 = i;
-                ModEntityDataList[i].Data.EntityDataID.Item1 = modID;
-                ModEntityDataList[i].Data.mod = this;
-                EntityData.AddEntityData(ModEntityDataList[i]);
-            }
-        }
 
         public Entity CreateEntity(int id)
         {
