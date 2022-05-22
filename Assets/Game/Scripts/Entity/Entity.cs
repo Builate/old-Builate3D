@@ -35,6 +35,24 @@ namespace KYapp.Builate
 
             transform.SetTransform();
         }
+
+        public void Destroy()
+        {
+            GameObject.Destroy(gameObject);
+        }
+
+        public void SetGameobject(GameObject obj)
+        {
+            gameObject = obj;
+        }
+        public C AddComponent<C>() where C : Component
+        {
+            return gameObject.AddComponent<C>();
+        }
+        public C GetComponent<C>() where C : Component
+        {
+            return gameObject.GetComponent<C>();
+        }
     }
 
 }

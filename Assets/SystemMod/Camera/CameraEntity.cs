@@ -14,11 +14,11 @@ namespace KYapp.Builate
 
         public override void Start()
         {
-            GameObject.Destroy(gameObject);
-            gameObject = GameObject.Instantiate(SystemModResource.Instance.PlayerCam1);
+            entity.Destroy();
+            entity.SetGameobject(GameObject.Instantiate(SystemModResource.Instance.PlayerCam1));
 
             Entity PlayerEntity = Data.mod.CreateEntity(1);
-            gameObject.GetComponent<CinemachineVirtualCamera>().Follow = PlayerEntity.EntityBase.gameObject.transform;
+            entity.GetComponent<CinemachineVirtualCamera>().Follow = PlayerEntity.EntityBase.entity.gameObject.transform;
         }
 
         public override void Update()
