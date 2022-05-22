@@ -11,8 +11,6 @@ namespace KYapp.Builate
         CameraEntity,
         [EntityData(typeof(PlayerEntity), "Player")]
         PlayerEntity,
-        [EntityData(typeof(TestEntity))]
-        TestEntity,
     }
 
     public class SystemMod : Mod
@@ -25,7 +23,6 @@ namespace KYapp.Builate
         public override void Start()
         {
             CreateEntity(0);
-            CreateEntity(2);
         }
     }
 

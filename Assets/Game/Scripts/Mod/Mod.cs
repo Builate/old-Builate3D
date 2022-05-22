@@ -31,7 +31,7 @@ namespace KYapp.Builate
 
         public Entity CreateEntity(int id)
         {
-            return EntityData.CreateEntity((this.modID, id));
+            return EntityData.CreateEntity((modID, id));
         }
 
         public Entity CreateEntity(string modId,int id)
