@@ -15,5 +15,10 @@ namespace KYapp.Builate
             this.type = type;
             this.name = name;
         }
+        public EntityDataAttribute(Type type)
+        {
+            this.type = type;
+            this.name = null;
+        }
     }
 }

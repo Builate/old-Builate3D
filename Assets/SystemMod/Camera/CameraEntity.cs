@@ -14,6 +14,7 @@ namespace KYapp.Builate
 
         public override void Start()
         {
+            GameObject.Destroy(gameObject);
             gameObject = GameObject.Instantiate(SystemModResource.Instance.PlayerCam1);
 
             Entity PlayerEntity = Data.mod.CreateEntity(1);

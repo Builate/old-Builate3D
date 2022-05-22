@@ -9,7 +9,7 @@ namespace KYapp.Builate
     {
         public override void Init()
         {
-            Data.Name = "PlayerEntity";
+
         }
         public override void Start()
         {

@@ -19,6 +19,14 @@ namespace KYapp.Builate
                 a.Data.EntityDataID.Item2 = i;
                 a.Data.EntityDataID.Item1 = mod.modID;
                 a.Data.mod = mod;
+                if (eda.name != null)
+                {
+                    a.Data.Name = eda.name;
+                }
+                else
+                {
+                    a.Data.Name = nameof(eda.type);
+                }
 
                 EntityData.AddEntityData(a);
             }
