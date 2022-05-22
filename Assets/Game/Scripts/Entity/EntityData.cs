@@ -18,6 +18,8 @@ namespace KYapp.Builate
         /// </summary>
         public static Dictionary<Guid, Entity> EntityList = new Dictionary<Guid, Entity>();
 
+        public static DVector3 Origin;
+
         public static (string, int) AddEntityData(EntityBase eb)
         {
             eb.Init();

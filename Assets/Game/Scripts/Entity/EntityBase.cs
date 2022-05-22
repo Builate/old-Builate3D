@@ -8,9 +8,9 @@ namespace KYapp.Builate
     public abstract class EntityBase
     {
         /// <summary>
-        /// 実体のgameObject
+        /// 実体のentity
         /// </summary>
-        public GameObject gameObject;
+        public Entity entity;
 
         /// <summary>
         /// 全てのブロックで共有されるべきデータはEntityBaseDataを継承してこのDataに代入してください。

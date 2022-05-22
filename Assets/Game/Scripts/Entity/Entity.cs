@@ -9,13 +9,15 @@ namespace KYapp.Builate
     {
         public Guid EntityID;
         public EntityBase EntityBase;
+        public ETransform transform;
+        public GameObject gameObject;
         private bool IsStart = true;
 
         public Entity(EntityBase entitybase)
         {
             EntityBase = entitybase;
             EntityID = Guid.NewGuid();
-            EntityBase.gameObject = new GameObject(EntityBase.Data.Name);
+            EntityBase.entity = this;
         }
 
         public void Update()
@@ -24,11 +26,14 @@ namespace KYapp.Builate
             {
                 EntityBase.Start();
                 IsStart = false;
+                transform.transform = gameObject.transform;
             }
             else
             {
                 EntityBase.Update();
             }
+
+            transform.SetTransform();
         }
     }
 
