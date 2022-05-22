@@ -9,14 +9,14 @@ namespace KYapp.Builate
     {
         public override void Init()
         {
-
+            Data.Name = "PlayerEntity";
         }
         public override void Start()
         {
-            CharacterController cc = gameObject.AddComponent<CharacterController>();
-            PlayerController pc = gameObject.AddComponent<PlayerController>();
+            CharacterController cc = entity.AddComponent<CharacterController>();
+            PlayerController pc = entity.AddComponent<PlayerController>();
             GameObject go = GameObject.Instantiate(SystemModResource.Instance.PlayerModelPrefab);
-            go.transform.SetParent(gameObject.transform);
+            go.transform.SetParent(entity.gameObject.transform);
             go.transform.localPosition = Vector3.zero;
 
             cc.slopeLimit = 45;
@@ -33,7 +33,7 @@ namespace KYapp.Builate
             pc.JumpForce = 10;
             pc.Velocity = new Vector3(0, 0, 0);
 
-            gameObject.transform.position = new Vector3(0, 10, 0);
+            entity.transform.position = new DVector3(0, 10, 0);
         }
 
         public override void Update()

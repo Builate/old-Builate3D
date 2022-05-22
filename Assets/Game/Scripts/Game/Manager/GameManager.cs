@@ -7,6 +7,8 @@ namespace KYapp.Builate
 {
     public class GameManager : Singleton<GameManager>
     {
+        public Vector3 origin;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -19,6 +21,7 @@ namespace KYapp.Builate
         // Update is called once per frame
         void Update()
         {
+            EntityData.Origin = new DVector3(origin);
             EntityData.Update();
         }
     }

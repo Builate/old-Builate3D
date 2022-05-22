@@ -18,6 +18,8 @@ namespace KYapp.Builate
             EntityBase = entitybase;
             EntityID = Guid.NewGuid();
             EntityBase.entity = this;
+            gameObject = new GameObject(EntityBase.Data.Name);
+            transform = new ETransform();
         }
 
         public void Update()

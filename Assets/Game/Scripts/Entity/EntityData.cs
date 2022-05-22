@@ -44,9 +44,10 @@ namespace KYapp.Builate
             {
                 values.Add(item);
             }
-            foreach (var item in values)
+            foreach (Entity item in values)
             {
                 item.Update();
+                item.transform.SetTransform();
             }
         }
     }

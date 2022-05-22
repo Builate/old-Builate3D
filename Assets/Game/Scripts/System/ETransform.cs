@@ -11,8 +11,16 @@ namespace KYapp.Builate
         public Vector3 scale;
         public Transform transform;
 
+        public ETransform()
+        {
+            position = DVector3.zero;
+            rotation = Quaternion.identity;
+            scale = Vector3.one;
+        }
+
         public void SetTransform()
         {
+            Debug.Log("aaa");
             SetPosition();
             SetRotation();
             SetScale();
