@@ -16,6 +16,7 @@ namespace KYapp.Builate
             CharacterController cc = gameObject.AddComponent<CharacterController>();
             PlayerController pc = gameObject.AddComponent<PlayerController>();
             GameObject go = GameObject.Instantiate(SystemModResource.Instance.PlayerModelPrefab);
+            gameObject.tag = "Player";
             go.transform.SetParent(gameObject.transform);
             go.transform.localPosition = Vector3.zero;
 
