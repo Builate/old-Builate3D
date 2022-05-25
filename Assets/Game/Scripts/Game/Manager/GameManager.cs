@@ -12,19 +12,30 @@ namespace KYapp.Builate
         public bool IsMulti;
         public bool IsServer;
 
+        public Multi Multi;
+
         // Start is called before the first frame update
         void Start()
         {
             if (IsMulti)
             {
+                Multi = new Multi();
 
+                Multi.Setup("192.168.11.51", 62711, res);
+                Multi.Start();
             }
             DebugModLoad();
+        }
+
+        public byte[] res(byte[] msg)
+        {
+            return msg;
         }
 
         // Update is called once per frame
         void Update()
         {
+            Multi.Update();
             EntityData.Update();
         }
 

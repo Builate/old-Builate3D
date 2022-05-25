@@ -8,6 +8,35 @@ using UnityEngine;
 
 namespace KYapp.Builate
 {
+    public class Multi
+    {
+        public MultiClient MultiClient;
+        private MultiServer MultiServer;
+        public void Setup(string host, int port, Server_GetByte server_GetByte)
+        {
+            if (GameManager.Instance.IsServer)
+            {
+                MultiServer = new MultiServer(port, server_GetByte);
+            
+            }
+            else
+            {
+                MultiClient = new MultiClient(host, port);
+            }
+        }
+
+        public void Start()
+        {
+
+        }
+        public void Update()
+        {
+            
+        }
+    }
+    /// <summary>
+    /// Client—p
+    /// </summary>
     public class MultiClient
     {
         private string host;
@@ -38,6 +67,9 @@ namespace KYapp.Builate
             UdpClient.Close();
         }
     }
+    /// <summary>
+    /// Server—p
+    /// </summary>
     public class MultiServer
     {
         private int port;
