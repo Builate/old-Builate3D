@@ -21,21 +21,19 @@ namespace KYapp.Builate
             {
                 Multi = new Multi();
 
-                Multi.Setup("192.168.11.51", 62711, res);
+                Multi.Setup("192.168.11.51", 62711);
                 Multi.Start();
             }
             DebugModLoad();
         }
 
-        public byte[] res(byte[] msg)
-        {
-            return msg;
-        }
-
         // Update is called once per frame
         void Update()
         {
-            Multi.Update();
+            if (IsMulti)
+            {
+                Multi.Update();
+            }
             EntityData.Update();
         }
 

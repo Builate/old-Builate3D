@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -12,12 +13,11 @@ namespace KYapp.Builate
     {
         public MultiClient MultiClient;
         private MultiServer MultiServer;
-        public void Setup(string host, int port, Server_GetByte server_GetByte)
+        public void Setup(string host, int port)
         {
             if (GameManager.Instance.IsServer)
             {
                 MultiServer = new MultiServer(port, server_GetByte);
-            
             }
             else
             {
@@ -27,11 +27,37 @@ namespace KYapp.Builate
 
         public void Start()
         {
+            if (GameManager.Instance.IsServer)
+            {
+                MultiServer.Start();
+            }
+            else
+            {
+                //初期同期
+                byte[] res = MultiClient.Send(Encoding.UTF8.GetBytes("init"));
 
+                Debug.Log(Encoding.UTF8.GetString(res));
+            }
         }
         public void Update()
         {
             
+        }
+
+        /// <summary>
+        /// サーバーがリクエストを受けたときに対応する関数
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public byte[] server_GetByte(byte[] msg)
+        {
+            if (Encoding.UTF8.GetString(msg) == "init")
+            {
+                Console.WriteLine("init");
+                return Encoding.UTF8.GetBytes("ret init");
+            }
+
+            return msg;
         }
     }
     /// <summary>
@@ -81,6 +107,10 @@ namespace KYapp.Builate
             this.port = port;
             this.server_GetByte = server_GetByte;
             UdpClient = new UdpClient(port);
+        }
+
+        public void Start()
+        {
             UdpClient.BeginReceive(Receive, UdpClient);
         }
 
