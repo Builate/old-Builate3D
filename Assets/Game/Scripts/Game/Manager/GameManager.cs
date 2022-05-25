@@ -10,7 +10,7 @@ namespace KYapp.Builate
     public class GameManager : Singleton<GameManager>
     {
         public bool IsMulti;
-        public MultiData MultiData;
+        public bool IsServer;
 
         // Start is called before the first frame update
         void Start()

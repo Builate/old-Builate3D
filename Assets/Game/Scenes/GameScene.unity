@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 3143.751, g: 2124.2578, b: 1682.4062, a: 1}
+  m_IndirectSpecularColor: {r: 3139.4766, g: 2126.5605, b: 1690.8867, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -447,6 +447,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33244691be35e914b98b50eba25f3c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsMulti: 0
+  MultiData:
+    ip: 
+    port: 0
 --- !u!1 &544281183
 GameObject:
   m_ObjectHideFlags: 0

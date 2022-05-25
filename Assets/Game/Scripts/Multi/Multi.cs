@@ -8,23 +8,33 @@ using UnityEngine;
 
 namespace KYapp.Builate
 {
-    public static class Multi
+    public class MultiClient
     {
-        public static MultiData MultiData;
-        public static TcpClient tcpClient;
-        public static UdpClient udpClient;
+        private string host;
+        private int port;
+        private UdpClient client;
 
-        public static void Init(MultiData multiData)
+        public MultiClient(string host,int port)
         {
-            MultiData = multiData;
+            this.host = host;
+            this.port = port;
 
+            client = new UdpClient();
+            client.Connect(host, port);
+        }
+
+        public byte[] Send(byte[] ms)
+        {
+            client.Send(ms, ms.Length);
+
+            IPEndPoint ServerEp = new IPEndPoint(IPAddress.Any, 0);
+            byte[] resbyte = client.Receive(ref ServerEp);
+
+            return resbyte;
         }
     }
-    
-    [Serializable]
-    public class MultiData
+    public class MultiServer
     {
-        public string ip;
-        public int port;
+
     }
 }
