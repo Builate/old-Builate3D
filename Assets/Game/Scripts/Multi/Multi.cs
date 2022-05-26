@@ -34,9 +34,10 @@ namespace KYapp.Builate
             else
             {
                 //èâä˙ìØä˙
-                byte[] res = MultiClient.Send(Encoding.UTF8.GetBytes("init"));
+                byte[] res = MultiClient.Send(Encoding.UTF8.GetBytes("init"),ProtocolType.rudp);
 
                 Debug.Log(Encoding.UTF8.GetString(res));
+                
             }
         }
         public void Update()
@@ -69,6 +70,10 @@ namespace KYapp.Builate
         private int port;
         private UdpClient UdpClient;
 
+        private TcpClient TcpClient;
+        private NetworkStream NetworkStream;
+        private bool isConnection;
+
         public MultiClient(string host,int port)
         {
             this.host = host;
@@ -76,16 +81,30 @@ namespace KYapp.Builate
 
             UdpClient = new UdpClient();
             UdpClient.Connect(host, port);
+
+            TcpClient = new TcpClient(host, port);
+            NetworkStream = TcpClient.GetStream();
+            isConnection = true;
         }
 
-        public byte[] Send(byte[] ms)
+        public byte[] Send(byte[] ms, ProtocolType type)
         {
-            UdpClient.Send(ms, ms.Length);
+            switch (type)
+            {
+                case ProtocolType.udp:
+                    UdpClient.Send(ms, ms.Length);
 
-            IPEndPoint ServerEp = new IPEndPoint(IPAddress.Any, 0);
-            byte[] resbyte = UdpClient.Receive(ref ServerEp);
+                    IPEndPoint ServerEp = new IPEndPoint(IPAddress.Any, 0);
+                    byte[] resbyte = UdpClient.Receive(ref ServerEp);
 
-            return resbyte;
+                    return resbyte;
+                case ProtocolType.rudp:
+
+                    NetworkStream.Write(ms, 0, ms.Length);
+                    return null;
+            }
+
+            return null;
         }
 
         public void Close()
@@ -134,4 +153,10 @@ namespace KYapp.Builate
     }
 
     public delegate byte[] Server_GetByte(byte[] ClientMsg);
+
+    public enum ProtocolType
+    {
+        udp,
+        rudp,
+    }
 }
