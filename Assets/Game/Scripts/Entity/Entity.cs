@@ -11,11 +11,42 @@ namespace KYapp.Builate
         public EntityBase EntityBase;
         private bool IsStart = true;
 
-        public Entity(EntityBase entitybase)
+        public Entity(EntityBase entitybase, string name = "")
         {
-            EntityBase = entitybase;
-            EntityID = Guid.NewGuid();
-            EntityBase.gameObject = new GameObject(EntityBase.Data.Name);
+            if (name == "")
+            {
+                _Entity(entitybase, Guid.NewGuid(), new GameObject(entitybase.Data.Name));
+            }
+            else
+            {
+                _Entity(entitybase, Guid.NewGuid(), new GameObject(name));
+            }
+        }
+
+        public Entity(EntityBase entitybase , Guid EntityID, string name = "")
+        {
+            if (name == "")
+            {
+                _Entity(entitybase, EntityID, new GameObject(entitybase.Data.Name));
+            }
+            else
+            {
+                _Entity(entitybase, EntityID, new GameObject(name));
+            }
+        }
+
+        public Entity(EntityBase EntityBase, Guid EntityID, GameObject gameObject)
+        {
+            _Entity(EntityBase, EntityID, gameObject);
+        }
+
+
+
+        public void _Entity(EntityBase EntityBase, Guid EntityID, GameObject gameObject)
+        {
+            this.EntityBase = EntityBase;
+            this.EntityID = EntityID;
+            this.EntityBase.gameObject = gameObject;
         }
 
         public void Update()
