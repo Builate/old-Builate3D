@@ -291,7 +291,7 @@ MonoBehaviour:
     m_Value: 1
   earthCurvature:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.059
   cloudTiling:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1}
@@ -530,7 +530,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value:
       mode: 0
-      customValue: 1000
+      customValue: 100
       additiveValue: 0
       multiplyValue: 1
   orientation:
