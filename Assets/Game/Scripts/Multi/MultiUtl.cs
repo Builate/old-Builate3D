@@ -2,50 +2,38 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using System.Net;
-using System.Net.Sockets;
 using UnityEngine;
+using LiteNetLib;
+using LiteNetLib.Utils;
 
 namespace KYapp.Builate
 {
-    public class MultiUtil
+    public static class MultiUtil
     {
-        public IPEndPoint EndPoint;
-        public UdpClient UdpClient;
-
-        public receive func;
-
-        public delegate void receive(IAsyncResult result);
-
-        public void Init(IPEndPoint endPoint)
+        /// <summary>
+        /// Serverをスタートする関数
+        /// </summary>
+        /// <param name="Server">スタートするNetManagerのインスタンス</param>
+        /// <param name="Port">使用するポート</param>
+        /// <param name="UpdateTime">アップデートする時の時間（ミリ秒）</param>
+        public static void StartServer(NetManager Server,int Port,int UpdateTime)
         {
-            EndPoint = endPoint;
-            UdpClient = new UdpClient();
-        }
-
-        public void Connect(receive func)
-        {
-            UdpClient.Connect(EndPoint);
-            UdpClient.BeginReceive(Receive,EndPoint);
-            this.func = func;
+            Debug.Log("StartServer");
+            Server.Start(Port);
+            Server.UpdateTime = UpdateTime;
         }
 
         /// <summary>
-        /// データを送る時に使用する関数
+        /// Clientをスタートする関数
         /// </summary>
-        /// <param name="data"></param>
-        public void Send(byte[] data)
+        /// <param name="Client">スタートするNetManagerのインスタンス</param>
+        /// <param name="UpdateTime">アップデートするときの時間（ミリ秒）</param>
+        public static void StartClient(NetManager Client, int UpdateTime)
         {
-            UdpClient.Send(data, data.Length);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="result"></param>
-        private void Receive(IAsyncResult result)
-        {
-            func(result);
+            Debug.Log("StartClient");
+            Client.UnconnectedMessagesEnabled = true;
+            Client.UpdateTime = UpdateTime;
+            Client.Start();
         }
     }
 }
