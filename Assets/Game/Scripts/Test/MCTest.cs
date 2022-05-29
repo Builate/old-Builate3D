@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MCTest : MonoBehaviour
 {
+    public int Size;
+
     public Node[,,] map = new Node[20, 20, 20];
 
     public MeshFilter mf;
