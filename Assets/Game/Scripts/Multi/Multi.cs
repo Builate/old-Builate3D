@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,7 @@ namespace KYapp.Builate
     {
         public NetManager NetManager;
         public NetDataWriter NetDataWriter;
+        public NetPeer NetPeer;
 
         public bool IsServer;
         public string Address;
@@ -30,23 +32,44 @@ namespace KYapp.Builate
 
         public void Start()
         {
+            NetManager = new NetManager(this);
             if (IsServer)
-            {
-                NetManager = new NetManager(this);
+            {   
                 MultiUtil.StartServer(NetManager, Port, 15);
             }
             else
             {
-                NetManager = new NetManager(this);
                 MultiUtil.StartClient(NetManager, 15);
-                NetManager.Connect(Address, Port,"Builate");
+                Connect();
             }
         }
         public void Update()
         {
             NetManager.PollEvents();
+            NetDataWriter.Reset();
+
+            //サーバーにつながっているなら
+            if (NetPeer?.ConnectionState == ConnectionState.Connected)
+            {
+                if (IsServer)
+                {
+
+                }
+                else
+                {
+                    if (Input.GetKeyDown(KeyCode.H))
+                    {
+                        NetDataWriter.Put("Hello!!!!!");
+                        NetPeer.Send(NetDataWriter, DeliveryMethod.ReliableOrdered);
+                    }
+                }
+            }
         }
 
+        public void Connect()
+        {
+            NetManager.Connect(Address, Port, "Builate");
+        }
 
         public void OnConnectionRequest(ConnectionRequest request)
         {
@@ -65,17 +88,41 @@ namespace KYapp.Builate
 
         public void OnNetworkReceive(NetPeer peer, NetPacketReader reader, DeliveryMethod deliveryMethod)
         {
-            
+            if (IsServer)
+            {
+                Debug.Log(reader.GetString());
+            }
+            else
+            {
+
+            }
         }
 
         public void OnNetworkReceiveUnconnected(IPEndPoint remoteEndPoint, NetPacketReader reader, UnconnectedMessageType messageType)
         {
             Debug.Log(remoteEndPoint.ToString());
+            if (IsServer)
+            {
+                
+            }
+            else
+            {
+                Connect();
+            }
         }
 
         public void OnPeerConnected(NetPeer peer)
         {
             Debug.Log("Connected!!! : " + peer.EndPoint);
+            NetPeer = peer;
+            if (IsServer)
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         public void OnPeerDisconnected(NetPeer peer, DisconnectInfo disconnectInfo)
