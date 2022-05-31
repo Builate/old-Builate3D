@@ -38,12 +38,12 @@ namespace KYapp.Builate
         /// <summary>
         /// ネットワーク通信時や、データのロード時に使用するDeserialize関数です。
         /// </summary>
-        public abstract DataWriter Deserialize();
+        public abstract void Deserialize(DataReader dataReader);
 
         /// <summary>
         /// ネットワーク通信時や、データのセーブ時に使用するSerialize関数です。
         /// </summary>
-        public abstract void Serialize(DataReader dataReader);
+        public abstract DataWriter Serialize();
     }
 
     public class EntityBaseData

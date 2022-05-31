@@ -62,6 +62,13 @@ namespace KYapp.Builate
                         NetDataWriter.Put("Hello!!!!!");
                         NetPeer.Send(NetDataWriter, DeliveryMethod.ReliableOrdered);
                     }
+
+                    foreach (var item in EntityData.EntityList.Values)
+                    {
+                        DataWriter dw = item.EntityBase.Serialize();
+                        NetDataWriter.Put(dw.GetData());
+                    }
+                    NetPeer.Send(NetDataWriter, DeliveryMethod.ReliableSequenced);
                 }
             }
         }

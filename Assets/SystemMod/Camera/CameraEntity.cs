@@ -26,13 +26,17 @@ namespace KYapp.Builate
 
         }
 
-        public override DataWriter Deserialize()
+        public override void Deserialize(DataReader dataReader)
         {
-            return null;
+            gameObject.transform.position = dataReader.GetVector3();
+            gameObject.transform.rotation = Quaternion.Euler(dataReader.GetVector3());
         }
-        public override void Serialize(DataReader dataReader)
+        public override DataWriter Serialize()
         {
-
+            DataWriter dw = new DataWriter();
+            dw.Put(gameObject.transform.position);
+            dw.Put(gameObject.transform.rotation.eulerAngles);
+            return dw;
         }
     }
 }
