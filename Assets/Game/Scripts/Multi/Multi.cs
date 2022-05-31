@@ -60,7 +60,6 @@ namespace KYapp.Builate
                     if (Input.GetKeyDown(KeyCode.H))
                     {
                         NetDataWriter.Put("Hello!!!!!");
-                        NetPeer.Send(NetDataWriter, DeliveryMethod.ReliableOrdered);
                     }
 
                     foreach (var item in EntityData.EntityList.Values)
@@ -68,9 +67,15 @@ namespace KYapp.Builate
                         DataWriter dw = item.EntityBase.Serialize();
                         NetDataWriter.Put(dw.GetData());
                     }
-                    NetPeer.Send(NetDataWriter, DeliveryMethod.ReliableSequenced);
+
+                    Send(DeliveryMethod.ReliableSequenced);
                 }
             }
+        }
+
+        public void Send(DeliveryMethod deliveryMethod)
+        {
+            NetPeer.Send(NetDataWriter.Data, deliveryMethod);
         }
 
         public void Connect()
@@ -97,7 +102,7 @@ namespace KYapp.Builate
         {
             if (IsServer)
             {
-                Debug.Log(reader.GetString());
+                Debug.Log(string.Join(',',reader.RawData));
             }
             else
             {
