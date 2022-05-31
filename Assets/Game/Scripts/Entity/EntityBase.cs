@@ -34,6 +34,16 @@ namespace KYapp.Builate
         /// UnityのUpdate関数と同じように考えてください。
         /// </summary>
         public abstract void Update();
+
+        /// <summary>
+        /// ネットワーク通信時や、データのロード時に使用するDeserialize関数です。
+        /// </summary>
+        public abstract void Deserialize();
+
+        /// <summary>
+        /// ネットワーク通信時や、データのセーブ時に使用するSerialize関数です。
+        /// </summary>
+        public abstract void Serialize();
     }
 
     public class EntityBaseData
