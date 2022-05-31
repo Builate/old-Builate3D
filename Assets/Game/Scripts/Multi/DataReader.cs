@@ -18,6 +18,7 @@ namespace KYapp.Builate
             this.data = data;
         }
 
+        #region ëgÇ›çûÇ›
         public bool GetBool()
         {
             return BitConverter.ToBoolean(Next(sizeof(bool)), 0);
@@ -62,6 +63,34 @@ namespace KYapp.Builate
         {
             return BitConverter.ToUInt16(Next(sizeof(ushort)), 0);
         }
+        #endregion
+
+        #region UnityëgÇ›çûÇ›
+        public Vector4 GetVector4()
+        {
+            Vector4 ret;
+            ret.x = GetFloat();
+            ret.y = GetFloat();
+            ret.z = GetFloat();
+            ret.w = GetFloat();
+            return ret;
+        }
+        public Vector3 GetVector3()
+        {
+            Vector3 ret;
+            ret.x = GetFloat();
+            ret.y = GetFloat();
+            ret.z = GetFloat();
+            return ret;
+        }
+        public Vector2 GetVector2()
+        {
+            Vector2 ret;
+            ret.x = GetFloat();
+            ret.y = GetFloat();
+            return ret;
+        }
+        #endregion
 
         public byte[] Next(int size)
         {
