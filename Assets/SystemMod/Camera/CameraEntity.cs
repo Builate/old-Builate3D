@@ -26,11 +26,11 @@ namespace KYapp.Builate
 
         }
 
-        public override void Deserialize()
+        public override DataWriter Deserialize()
         {
-
+            return null;
         }
-        public override void Serialize()
+        public override void Serialize(DataReader dataReader)
         {
 
         }
