@@ -16,6 +16,21 @@ namespace KYapp.Builate
 
         void Start()
         {
+            DataWriter dw = new DataWriter();
+            dw.Put(true);
+            dw.Put(new Vector2(100, 200));
+            dw.Put(40.2f);
+            dw.Put(0);
+            byte[] data = dw.GetData();
+            Debug.Log(string.Join(',',data));
+
+            DataReader dr = new DataReader(data);
+            Debug.Log(dr.GetBool());
+            Debug.Log(dr.GetVector2());
+            Debug.Log(dr.GetFloat());
+            Debug.Log(dr.GetInt());
+
+
             if (IsMulti)
             {
                 Multi = new Multi(IsServer, "192.168.11.51", 62711);

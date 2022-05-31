@@ -25,5 +25,14 @@ namespace KYapp.Builate
         {
 
         }
+
+        public override void Deserialize()
+        {
+
+        }
+        public override void Serialize()
+        {
+
+        }
     }
 }

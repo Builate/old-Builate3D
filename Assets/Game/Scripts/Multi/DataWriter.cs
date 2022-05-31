@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +8,12 @@ namespace KYapp.Builate
 {
     public class DataWriter
     {
-        public List<byte> data
+        private List<byte> data =new List<byte>();
+
+        public byte[] GetData()
         {
-            get;
-            private set;
-        } = new List<byte>();
+            return data.ToArray();
+        }
 
         #region ëgÇ›çûÇ›
         public void Put(bool value)
@@ -66,6 +68,12 @@ namespace KYapp.Builate
         public void Put(ushort value)
         {
             data.AddRange(BitConverter.GetBytes(value));
+        }
+        public void Put(string value)
+        {
+            byte[] _value = Encoding.UTF8.GetBytes(value);
+            Put(_value.Length);
+            data.AddRange(_value);
         }
 
         #endregion
