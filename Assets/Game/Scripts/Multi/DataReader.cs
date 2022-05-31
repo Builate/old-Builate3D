@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +8,7 @@ namespace KYapp.Builate
 {
     public class DataReader
     {
-        public byte[] data
-        {
-            get;
-            private set;
-        }
+        private byte[] data;
         private int Current = 0;
         public DataReader(byte[] data)
         {
@@ -62,6 +59,11 @@ namespace KYapp.Builate
         public ushort GetUShort()
         {
             return BitConverter.ToUInt16(Next(sizeof(ushort)), 0);
+        }
+        public string GetString()
+        {
+            int length = GetInt();
+            return Encoding.UTF8.GetString(Next(length));
         }
         #endregion
 
