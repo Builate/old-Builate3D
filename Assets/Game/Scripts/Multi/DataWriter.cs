@@ -105,5 +105,10 @@ namespace KYapp.Builate
             data.AddRange(value);
         }
         #endregion
+
+        public void Put(DataWriter value)
+        {
+            data.AddRange(value.GetData());
+        }
     }
 }

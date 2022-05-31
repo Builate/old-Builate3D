@@ -22,8 +22,10 @@ namespace KYapp.Builate
 
         public override void Start()
         {
-            CreateEntity(0);
+            if (!GameManager.Instance.IsServer)
+            {
+                CreateEntity(0);
+            }
         }
     }
-
 }

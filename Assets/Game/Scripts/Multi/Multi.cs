@@ -59,17 +59,19 @@ namespace KYapp.Builate
                 {
                     if (Input.GetKeyDown(KeyCode.H))
                     {
-                        NetDataWriter.Put("Hello!!!!!");
-                    }
 
-                    foreach (var item in EntityData.EntityList.Keys)
-                    {
-                        DataWriter dw = EntityData.EntityList[item].EntityBase.Serialize();
-                        dw.Put(item.ToByteArray());
-                        NetDataWriter.Put(dw.GetData());
-                    }
+                        List<byte> data = new List<byte>();
+                        foreach (var item in EntityData.EntityList.Keys)
+                        {
+                            DataWriter dw = new DataWriter();
+                            dw.Put(item.ToByteArray());
+                            dw.Put(EntityData.EntityList[item].EntityBase.Serialize());
+                            data.AddRange(dw.GetData());
+                        }
+                        NetDataWriter.PutBytesWithLength(data.ToArray());
 
-                    Send(DeliveryMethod.ReliableSequenced);
+                        Send(DeliveryMethod.ReliableSequenced);
+                    }
                 }
             }
         }
@@ -101,9 +103,12 @@ namespace KYapp.Builate
 
         public void OnNetworkReceive(NetPeer peer, NetPacketReader reader, DeliveryMethod deliveryMethod)
         {
+            DataReader dr = new DataReader(reader.GetBytesWithLength());
             if (IsServer)
             {
-                Debug.Log(string.Join(',',reader.RawData));
+                Debug.Log(new Guid(dr.GetBytes()));
+                Debug.Log(dr.GetVector3());
+                Debug.Log(dr.GetVector3());
             }
             else
             {

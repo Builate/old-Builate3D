@@ -104,8 +104,7 @@ namespace KYapp.Builate
 
         public byte[] Next(int size)
         {
-            byte[] ret = new byte[size];
-            Buffer.BlockCopy(data, Current, ret, 0, size);
+            byte[] ret = data[Current..(Current + size)];
             Current += size;
             return ret;
         }
