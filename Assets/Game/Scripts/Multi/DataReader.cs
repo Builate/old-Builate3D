@@ -94,6 +94,14 @@ namespace KYapp.Builate
         }
         #endregion
 
+        #region ”z—ñ
+        public byte[] GetBytes()
+        {
+            int length = GetInt();
+            return Next(length);
+        }
+        #endregion
+
         public byte[] Next(int size)
         {
             byte[] ret = new byte[size];

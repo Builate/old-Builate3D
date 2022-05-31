@@ -62,9 +62,10 @@ namespace KYapp.Builate
                         NetDataWriter.Put("Hello!!!!!");
                     }
 
-                    foreach (var item in EntityData.EntityList.Values)
+                    foreach (var item in EntityData.EntityList.Keys)
                     {
-                        DataWriter dw = item.EntityBase.Serialize();
+                        DataWriter dw = EntityData.EntityList[item].EntityBase.Serialize();
+                        dw.Put(item.ToByteArray());
                         NetDataWriter.Put(dw.GetData());
                     }
 

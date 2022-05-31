@@ -72,8 +72,7 @@ namespace KYapp.Builate
         public void Put(string value)
         {
             byte[] _value = Encoding.UTF8.GetBytes(value);
-            Put(_value.Length);
-            data.AddRange(_value);
+            Put(_value);
         }
 
         #endregion
@@ -97,6 +96,14 @@ namespace KYapp.Builate
             data.AddRange(BitConverter.GetBytes(value.x));
             data.AddRange(BitConverter.GetBytes(value.y));
         }
-        #endregion 
+        #endregion
+
+        #region ”z—ñ
+        public void Put(byte[] value)
+        {
+            Put(value.Length);
+            data.AddRange(value);
+        }
+        #endregion
     }
 }
