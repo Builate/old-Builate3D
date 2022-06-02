@@ -11,15 +11,11 @@ namespace KYapp.Builate
     {
         public bool IsMulti;
         public bool IsServer;
-
-        public Multi Multi;
-
         void Start()
         {
             if (IsMulti)
             {
-                Multi = new Multi(IsServer, "192.168.11.51", 62711);
-                Multi.Start();
+                
             }
             DebugModLoad();
         }
@@ -28,7 +24,7 @@ namespace KYapp.Builate
         {
             if (IsMulti)
             {
-                Multi.Update();
+                
             }
             EntityData.Update();
         }
