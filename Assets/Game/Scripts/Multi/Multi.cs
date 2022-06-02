@@ -34,7 +34,9 @@ namespace KYapp.Builate
         {
             NetManager = new NetManager(this);
             if (IsServer)
-            {   
+            {
+                Console.Clear();
+                Console.CursorVisible = false;
                 MultiUtil.StartServer(NetManager, Port, 15);
             }
             else
@@ -47,7 +49,7 @@ namespace KYapp.Builate
         {
             NetManager.PollEvents();
             NetDataWriter.Reset();
-
+            
             //サーバーにつながっているなら
             if (NetPeer?.ConnectionState == ConnectionState.Connected)
             {
@@ -57,21 +59,21 @@ namespace KYapp.Builate
                 }
                 else
                 {
-                    if (Input.GetKeyDown(KeyCode.H))
+                    var dw = new DataWriter();
+
+                    dw.Put(EntityData.EntityList.Count);
+
+                    foreach (var item in EntityData.EntityList.Keys)
                     {
-
-                        List<byte> data = new List<byte>();
-                        foreach (var item in EntityData.EntityList.Keys)
-                        {
-                            DataWriter dw = new DataWriter();
-                            dw.Put(item.ToByteArray());
-                            dw.Put(EntityData.EntityList[item].EntityBase.Serialize());
-                            data.AddRange(dw.GetData());
-                        }
-                        NetDataWriter.PutBytesWithLength(data.ToArray());
-
-                        Send(DeliveryMethod.ReliableSequenced);
+                        
+                        dw.Put(item.ToByteArray());
+                        dw.Put(EntityData.EntityList[item].EntityBase.Serialize());
+                        
                     }
+                    NetDataWriter.PutBytesWithLength(dw.GetData());
+
+                    Send(DeliveryMethod.ReliableSequenced);
+                    
                 }
             }
         }
@@ -103,12 +105,17 @@ namespace KYapp.Builate
 
         public void OnNetworkReceive(NetPeer peer, NetPacketReader reader, DeliveryMethod deliveryMethod)
         {
+            Console.SetCursorPosition(0, 0);
             DataReader dr = new DataReader(reader.GetBytesWithLength());
             if (IsServer)
             {
-                Debug.Log(new Guid(dr.GetBytes()));
-                Debug.Log(dr.GetVector3());
-                Debug.Log(dr.GetVector3());
+                int c = dr.GetInt();
+                for (int i = 0; i < c; i++)
+                {
+                    Debug.Log(EntityData.EntityList.ContainsKey(new Guid(dr.GetBytes())));
+                    Debug.Log(dr.GetVector3());
+                    Debug.Log(dr.GetVector3());
+                }
             }
             else
             {
