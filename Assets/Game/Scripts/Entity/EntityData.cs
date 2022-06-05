@@ -27,11 +27,11 @@ namespace KYapp.Builate
 
         public static Entity CreateEntity((string, int) id)
         {
+//            Client.Instance.CreateEntity(id);
             EntityBase eb = (EntityBase)Activator.CreateInstance(EntityDataList[id].GetType());
             eb.Data = EntityDataList[id].Data;
             Entity entity = new Entity(eb);
             EntityList.Add(entity.EntityID, entity);
-
             return entity;
         }
 

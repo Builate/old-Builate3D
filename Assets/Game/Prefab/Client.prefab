@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1364187451158486456}
   - component: {fileID: 4148518805011320473}
+  - component: {fileID: -6582257547875936037}
   m_Layer: 0
   m_Name: Client
   m_TagString: Untagged
@@ -49,3 +50,15 @@ MonoBehaviour:
   visible: 0
   m_AssetId: 666a1b6a717cc8d45b233accbf0524ea
   hasSpawned: 0
+--- !u!114 &-6582257547875936037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4758238551109058770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2ca9ed5e78e804ebad4168db981493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

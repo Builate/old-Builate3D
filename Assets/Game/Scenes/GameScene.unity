@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 5443.2207, g: 3387.582, b: 2325.586, a: 1}
+  m_IndirectSpecularColor: {r: 5443.16, g: 3387.58, b: 2325.6133, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -448,9 +448,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33244691be35e914b98b50eba25f3c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMulti: 1
+  isMulti: 0
   isServer: 0
-  networkAddress: 192.168.11.60
+  networkAddress: tcp://6.tcp.ngrok.io
   networkManager: {fileID: 638021886}
 --- !u!1 &544281183
 GameObject:
@@ -511,6 +511,7 @@ GameObject:
   - component: {fileID: 638021883}
   - component: {fileID: 638021886}
   - component: {fileID: 638021885}
+  - component: {fileID: 638021887}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -540,7 +541,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638021882}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b0fecffa3f624585964b0d0eb21b18e, type: 3}
   m_Name: 
@@ -571,16 +572,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 638021882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
+  m_Script: {fileID: 11500000, guid: a8909c0efee616b49aab95e40542fe71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
   runInBackground: 1
   autoStartServerBuild: 1
-  serverTickRate: 0
+  serverTickRate: 100
   offlineScene: 
   onlineScene: 
-  transport: {fileID: 638021885}
+  transport: {fileID: 638021887}
   networkAddress: 192.168.11.60
   maxConnections: 100
   authenticator: {fileID: 0}
@@ -589,6 +590,30 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
+--- !u!114 &638021887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638021882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  port: 11802
+  NoDelay: 1
+  SendTimeout: 5000
+  ReceiveTimeout: 30000
+  serverMaxMessageSize: 16384
+  serverMaxReceivesPerTick: 10000
+  serverSendQueueLimitPerConnection: 10000
+  serverReceiveQueueLimitPerConnection: 10000
+  clientMaxMessageSize: 16384
+  clientMaxReceivesPerTick: 1000
+  clientSendQueueLimit: 10000
+  clientReceiveQueueLimit: 10000
 --- !u!1 &1508733054
 GameObject:
   m_ObjectHideFlags: 0

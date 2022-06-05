@@ -8,7 +8,7 @@ using Mirror;
 
 namespace KYapp.Builate
 {
-    public class GameManager : Singleton<GameManager>
+    public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         public bool isMulti;
         public bool isServer;
@@ -33,16 +33,17 @@ namespace KYapp.Builate
                     networkManager.serverTickRate = 0;
                 }
             }
+            else
+            {
+                //ローカルプレイ
+                networkManager.StartHost();
+            }
             
             DebugModLoad();
         }
 
         void Update()
         {
-            if (isMulti)
-            {
-                
-            }
             EntityData.Update();
         }
 
@@ -52,6 +53,11 @@ namespace KYapp.Builate
             sysmod.Init();
             ModLoader.SetEntityData(sysmod);
             sysmod.Start();
+        }
+
+        public void OnConnectedToServer()
+        {
+            Debug.Log("aaaa");
         }
     }
 }

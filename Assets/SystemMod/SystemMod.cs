@@ -7,9 +7,9 @@ namespace KYapp.Builate
 {
     public enum SystemModEntityData
     {
-        [EntityData(typeof(CameraEntity), "Camera")]
+        [EntityData(typeof(CameraEntity), "Camera",true)]
         CameraEntity,
-        [EntityData(typeof(PlayerEntity), "Player")]
+        [EntityData(typeof(PlayerEntity), "Player", false)]
         PlayerEntity,
     }
 
