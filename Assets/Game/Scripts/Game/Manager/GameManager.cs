@@ -22,20 +22,21 @@ namespace KYapp.Builate
                 if (isServer)
                 {
                     //Serverオンリー
-                    networkManager.StartServer();
                     networkManager.serverTickRate = 30;
+                    networkManager.StartServer();
                 }
                 else
                 {
                     //Client + ip
-                    networkManager.StartClient();
                     networkManager.networkAddress = networkAddress;
                     networkManager.serverTickRate = 0;
+                    networkManager.StartClient();
                 }
             }
             else
             {
                 //ローカルプレイ
+                networkManager.serverTickRate = 0;
                 networkManager.StartHost();
             }
             
