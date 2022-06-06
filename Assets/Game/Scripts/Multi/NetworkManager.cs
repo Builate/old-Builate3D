@@ -6,8 +6,12 @@ using System;
 
 namespace KYapp.Builate
 {
-    public class NetworkManager : Mirror.NetworkManager
+    public class NetworkManager : NetworkManagerSingleton<NetworkManager>
     {
-        
+        public override void OnClientConnect()
+        {
+            base.OnClientConnect();
+            GameManager.Instance.DebugModLoad();
+        }
     }
 }

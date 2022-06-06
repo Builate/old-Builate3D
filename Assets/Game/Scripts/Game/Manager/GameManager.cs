@@ -14,7 +14,6 @@ namespace KYapp.Builate
         public bool isServer;
         public string networkAddress;
         
-        public NetworkManager networkManager;
         void Start()
         {
             if (isMulti)
@@ -22,25 +21,23 @@ namespace KYapp.Builate
                 if (isServer)
                 {
                     //Serverオンリー
-                    networkManager.serverTickRate = 30;
-                    networkManager.StartServer();
+                    NetworkManager.Instance.serverTickRate = 30;
+                    NetworkManager.Instance.StartServer();
                 }
                 else
                 {
                     //Client + ip
-                    networkManager.networkAddress = networkAddress;
-                    networkManager.serverTickRate = 0;
-                    networkManager.StartClient();
+                    NetworkManager.Instance.networkAddress = networkAddress;
+                    NetworkManager.Instance.serverTickRate = 0;
+                    NetworkManager.Instance.StartClient();
                 }
             }
             else
             {
                 //ローカルプレイ
-                networkManager.serverTickRate = 0;
-                networkManager.StartHost();
+                NetworkManager.Instance.serverTickRate = 0;
+                NetworkManager.Instance.StartHost();
             }
-            
-            DebugModLoad();
         }
 
         void Update()

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 5443.16, g: 3387.58, b: 2325.6133, a: 1}
+  m_IndirectSpecularColor: {r: 5446.254, g: 3388.707, b: 2323.6055, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -451,7 +451,6 @@ MonoBehaviour:
   isMulti: 0
   isServer: 0
   networkAddress: tcp://6.tcp.ngrok.io
-  networkManager: {fileID: 638021886}
 --- !u!1 &544281183
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +510,6 @@ GameObject:
   - component: {fileID: 638021883}
   - component: {fileID: 638021886}
   - component: {fileID: 638021885}
-  - component: {fileID: 638021887}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -541,12 +539,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638021882}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b0fecffa3f624585964b0d0eb21b18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Port: 7777
+  Port: 62711
   DualMode: 1
   NoDelay: 1
   Interval: 10
@@ -581,7 +579,7 @@ MonoBehaviour:
   serverTickRate: 100
   offlineScene: 
   onlineScene: 
-  transport: {fileID: 638021887}
+  transport: {fileID: 638021885}
   networkAddress: 192.168.11.60
   maxConnections: 100
   authenticator: {fileID: 0}
@@ -590,30 +588,6 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
---- !u!114 &638021887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638021882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  port: 11802
-  NoDelay: 1
-  SendTimeout: 5000
-  ReceiveTimeout: 30000
-  serverMaxMessageSize: 16384
-  serverMaxReceivesPerTick: 10000
-  serverSendQueueLimitPerConnection: 10000
-  serverReceiveQueueLimitPerConnection: 10000
-  clientMaxMessageSize: 16384
-  clientMaxReceivesPerTick: 1000
-  clientSendQueueLimit: 10000
-  clientReceiveQueueLimit: 10000
 --- !u!1 &1508733054
 GameObject:
   m_ObjectHideFlags: 0
