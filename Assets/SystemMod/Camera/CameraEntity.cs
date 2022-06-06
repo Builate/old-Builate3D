@@ -19,7 +19,6 @@ namespace KYapp.Builate
         {
             GameObject.Destroy(gameObject);
             gameObject = GameObject.Instantiate(SystemModResource.Instance.PlayerCam1);
-            Debug.Log(PlayerGuid);
             Data.mod.CreateEntity(1, PlayerGuid);
         }
 
