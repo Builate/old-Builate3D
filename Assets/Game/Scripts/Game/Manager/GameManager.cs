@@ -9,24 +9,18 @@ namespace KYapp.Builate
 {
     public class GameManager : Singleton<GameManager>
     {
-        public bool IsMulti;
-        public bool IsServer;
         void Start()
         {
-            if (IsMulti)
-            {
-                
-            }
             DebugModLoad();
         }
 
         void Update()
         {
-            if (IsMulti)
-            {
-                
-            }
             EntityData.Update();
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                SaveLoad.Save();
+            }
         }
 
         public void DebugModLoad()

@@ -25,12 +25,15 @@ namespace KYapp.Builate
 
         public override void Deserialize(DataReader dataReader)
         {
-
+            gameObject.transform.position = dataReader.GetVector3();
+            gameObject.transform.rotation = Quaternion.Euler(dataReader.GetVector3());
         }
-
         public override DataWriter Serialize()
         {
-            return null;
+            DataWriter dw = new DataWriter();
+            dw.Put(gameObject.transform.position);
+            dw.Put(gameObject.transform.rotation.eulerAngles);
+            return dw;
         }
     }
 }
