@@ -19,7 +19,6 @@ namespace KYapp.Builate
                 a.Data.EntityDataID.Item2 = i;
                 a.Data.EntityDataID.Item1 = mod.modID;
                 a.Data.mod = mod;
-                a.Data.isLocal = eda.isLocal;
                 if (eda.name != null)
                 {
                     a.Data.Name = eda.name;

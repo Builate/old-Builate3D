@@ -25,14 +25,14 @@ namespace KYapp.Builate
             return eb.Data.EntityDataID;
         }
 
-        public static void CreateEntity((string, int) id, Guid guid)
+        public static Entity CreateEntity((string, int) id)
         {
-            Client.Instance.CreateEntity(id, guid);
-        }
-        
-        public static void CreateEntity((string, int) id)
-        {
-            CreateEntity(id, Guid.NewGuid());
+            EntityBase eb = (EntityBase)Activator.CreateInstance(EntityDataList[id].GetType());
+            eb.Data = EntityDataList[id].Data;
+            Entity entity = new Entity(eb);
+            EntityList.Add(entity.EntityID, entity);
+
+            return entity;
         }
 
         public static void Update()

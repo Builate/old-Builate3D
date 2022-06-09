@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +7,6 @@ namespace KYapp.Builate
 {
     public class CameraEntity : EntityBase
     {
-        public Guid PlayerGuid = Guid.NewGuid();
-        
         public override void Init()
         {
             Data.Name = "CameraEntity";
@@ -19,16 +16,14 @@ namespace KYapp.Builate
         {
             GameObject.Destroy(gameObject);
             gameObject = GameObject.Instantiate(SystemModResource.Instance.PlayerCam1);
-            Data.mod.CreateEntity(1, PlayerGuid);
+
+            Entity PlayerEntity = Data.mod.CreateEntity(1);
+            gameObject.GetComponent<CinemachineVirtualCamera>().Follow = PlayerEntity.EntityBase.gameObject.transform;
         }
 
         public override void Update()
         {
-            if (EntityData.EntityList.ContainsKey(PlayerGuid))
-            {
-                gameObject.GetComponent<CinemachineVirtualCamera>().Follow =
-                    EntityData.EntityList[PlayerGuid].EntityBase.gameObject.transform;
-            }
+
         }
 
         public override void Deserialize(DataReader dataReader)

@@ -61,10 +61,5 @@ namespace KYapp.Builate
         /// 親mod
         /// </summary>
         public Mod mod;
-        /// <summary>
-        /// ローカルのエンティティかどうか
-        /// （カメラなどの場合はLocalエンティティ）
-        /// </summary>
-        public bool isLocal;
     }
 }

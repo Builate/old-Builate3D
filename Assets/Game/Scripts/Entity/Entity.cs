@@ -11,7 +11,7 @@ namespace KYapp.Builate
         public EntityBase EntityBase;
         private bool IsStart = true;
 
-        public Entity(EntityBase entitybase,string name = "")
+        public Entity(EntityBase entitybase, string name = "")
         {
             if (name == "")
             {
@@ -32,29 +32,6 @@ namespace KYapp.Builate
             else
             {
                 _Entity(entitybase, EntityID, new GameObject(name));
-            }
-        }
-        public Entity(EntityBase entitybase,GameObject gameObject,string name = "")
-        {
-            if (name == "")
-            {
-                _Entity(entitybase, Guid.NewGuid(), gameObject);
-            }
-            else
-            {
-                _Entity(entitybase, Guid.NewGuid(), gameObject);
-            }
-        }
-
-        public Entity(EntityBase entitybase, GameObject gameObject, Guid EntityID, string name = "")
-        {
-            if (name == "")
-            {
-                _Entity(entitybase, EntityID, gameObject);
-            }
-            else
-            {
-                _Entity(entitybase, EntityID, gameObject);
             }
         }
 
@@ -83,4 +60,5 @@ namespace KYapp.Builate
             }
         }
     }
+
 }

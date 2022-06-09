@@ -7,9 +7,9 @@ namespace KYapp.Builate
 {
     public enum SystemModEntityData
     {
-        [EntityData(typeof(CameraEntity), "Camera",true)]
+        [EntityData(typeof(CameraEntity), "Camera")]
         CameraEntity,
-        [EntityData(typeof(PlayerEntity), "Player", false)]
+        [EntityData(typeof(PlayerEntity), "Player")]
         PlayerEntity,
     }
 
@@ -22,7 +22,7 @@ namespace KYapp.Builate
 
         public override void Start()
         {
-            if (!GameManager.Instance.isServer)
+            if (!GameManager.Instance.IsServer)
             {
                 CreateEntity(0);
             }

@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,23 +29,14 @@ namespace KYapp.Builate
         public abstract void Start();
 
 
-        public void CreateEntity(int id)
+        public Entity CreateEntity(int id)
         {
-            EntityData.CreateEntity((modID, id));
+            return EntityData.CreateEntity((modID, id));
         }
 
-        public void CreateEntity(string modId,int id)
+        public Entity CreateEntity(string modId,int id)
         {
-            EntityData.CreateEntity((modId, id));
-        }
-        public void CreateEntity(int id,Guid guid)
-        {
-            EntityData.CreateEntity((modID, id), guid);
-        }
-
-        public void CreateEntity(string modId,int id,Guid guid)
-        {
-            EntityData.CreateEntity((modId, id), guid);
+            return EntityData.CreateEntity((modId, id));
         }
     }
 }
