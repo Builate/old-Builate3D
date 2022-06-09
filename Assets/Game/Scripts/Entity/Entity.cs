@@ -39,7 +39,7 @@ namespace KYapp.Builate
             _Entity(EntityBase, EntityID, gameObject);
         }
 
-        public void _Entity(EntityBase EntityBase, Guid EntityID, GameObject gameObject)
+        private void _Entity(EntityBase EntityBase, Guid EntityID, GameObject gameObject)
         {
             this.EntityBase = EntityBase;
             this.EntityID = EntityID;

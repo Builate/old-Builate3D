@@ -7,6 +7,7 @@ namespace KYapp.Builate
 {
     public class CameraEntity : EntityBase
     {
+        public static CinemachineVirtualCamera CvCamera;
         public override void Init()
         {
             Data.Name = "CameraEntity";
@@ -23,19 +24,22 @@ namespace KYapp.Builate
 
         public override void Update()
         {
-
+            
         }
 
         public override void Deserialize(DataReader dataReader)
         {
-            gameObject.transform.position = dataReader.GetVector3();
-            gameObject.transform.rotation = Quaternion.Euler(dataReader.GetVector3());
+            GameObject.Destroy(gameObject);
+            gameObject = GameObject.Instantiate(SystemModResource.Instance.PlayerCam1);
+
+            CvCamera = gameObject.GetComponent<CinemachineVirtualCamera>();
+            
+            D_Transform(dataReader.GetBytes());
         }
         public override DataWriter Serialize()
         {
             DataWriter dw = new DataWriter();
-            dw.Put(gameObject.transform.position);
-            dw.Put(gameObject.transform.rotation.eulerAngles);
+            dw.Put(S_Transform());
             return dw;
         }
     }

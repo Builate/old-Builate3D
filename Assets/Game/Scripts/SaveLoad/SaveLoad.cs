@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,27 +19,49 @@ namespace KYapp.Builate
         {
             return File.ReadAllBytes(path);
         }
+
+        private static string GetPath(string filename)
+        {
+            return Application.persistentDataPath + "/" + filename;
+        }
         
         public static void Save()
         {
             DataWriter dataWriter = new DataWriter();
 
-            for (int i = 0; i < EntityData.EntityList.Count; i++)
+            int c = EntityData.EntityList.Count;
+
+            dataWriter.Put(c);
+            for (int i = 0; i < c; i++)
             {
-                EntityBase eb = EntityData.EntityList[EntityData.EntityList.Keys.ToArray()[i]].EntityBase;
-                dataWriter.Put(eb.Data.EntityDataID.Item1);
-                dataWriter.Put(eb.Data.EntityDataID.Item2);
-                dataWriter.Put(eb.Serialize());
+                Entity entity = EntityData.EntityList[EntityData.EntityList.Keys.ToArray()[i]];
+                dataWriter.Put(entity.EntityBase.Data.EntityDataID.Item1);
+                dataWriter.Put(entity.EntityBase.Data.EntityDataID.Item2);
+                dataWriter.Put(entity.EntityID.ToByteArray());
+                dataWriter.Put(entity.EntityBase.Serialize().GetData());
             }
             
             Debug.Log( string.Join(',',dataWriter.GetData().ToArray()));
-            
-            BytesSave(dataWriter.GetData(), Application.persistentDataPath + "/" + "test.BuilateEntityData");
+
+            BytesSave(dataWriter.GetData(), GetPath("test.BuilateEntityData"));
         }
 
         public static void Load()
         {
+            DataReader dataReader = new DataReader(BytesLoad(GetPath("test.BuilateEntityData")));
+
+            int c = dataReader.GetInt();
             
+            for (int i = 0; i < c; i++)
+            {
+                (string, int) id;
+                id.Item1 = dataReader.GetString();
+                id.Item2 = dataReader.GetInt();
+                Guid entityID = new Guid(dataReader.GetBytes());
+                Entity entity = new Entity(EntityData.EntityDataList[id], entityID);
+                entity.EntityBase.Deserialize(new DataReader(dataReader.GetBytes()));
+                EntityData.AddEntity(entity);
+            }
         }
     }
 }

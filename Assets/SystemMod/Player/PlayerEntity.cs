@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace KYapp.Builate
 {
+    
     public class PlayerEntity : EntityBase
     {
         public override void Init()
@@ -12,6 +13,18 @@ namespace KYapp.Builate
 
         }
         public override void Start()
+        {
+            Debug.Log("aaaaaa");
+            SetComponent();
+            gameObject.transform.position = new Vector3(0, 10, 0);
+        }
+
+        public override void Update()
+        {
+
+        }
+
+        public void SetComponent()
         {
             CharacterController cc = gameObject.AddComponent<CharacterController>();
             PlayerController pc = gameObject.AddComponent<PlayerController>();
@@ -33,24 +46,18 @@ namespace KYapp.Builate
             pc.GravityScale = 40f;
             pc.JumpForce = 10;
             pc.Velocity = new Vector3(0, 0, 0);
-
-            gameObject.transform.position = new Vector3(0, 10, 0);
         }
-
-        public override void Update()
-        {
-
-        }
+        
         public override void Deserialize(DataReader dataReader)
         {
-            gameObject.transform.position = dataReader.GetVector3();
-            gameObject.transform.rotation = Quaternion.Euler(dataReader.GetVector3());
+            D_Transform(dataReader.GetBytes());
+            SetComponent();
+            CameraEntity.CvCamera.Follow = gameObject.transform;
         }
         public override DataWriter Serialize()
         {
             DataWriter dw = new DataWriter();
-            dw.Put(gameObject.transform.position);
-            dw.Put(gameObject.transform.rotation.eulerAngles);
+            dw.Put(S_Transform());
             return dw;
         }
     }

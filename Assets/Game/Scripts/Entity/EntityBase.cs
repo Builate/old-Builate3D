@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace KYapp.Builate
@@ -44,6 +45,34 @@ namespace KYapp.Builate
         /// ネットワーク通信時や、データのセーブ時に使用するSerialize関数です。
         /// </summary>
         public abstract DataWriter Serialize();
+
+        #region SerializeUtility
+
+        public byte[] S_Transform()
+        {
+            DataWriter dataWriter = new DataWriter();
+
+            dataWriter.Put(gameObject.transform.position);
+            dataWriter.Put(gameObject.transform.rotation.eulerAngles);
+            dataWriter.Put(gameObject.transform.localScale);
+            
+            return dataWriter.GetData();
+        }
+
+        #endregion
+
+        #region DeserializeUtility
+
+        public void D_Transform(byte[] data)
+        {
+            DataReader dataReader = new DataReader(data);
+
+            gameObject.transform.position = dataReader.GetVector3();
+            gameObject.transform.rotation = Quaternion.Euler(dataReader.GetVector3());
+            gameObject.transform.localScale = dataReader.GetVector3();
+        }
+
+        #endregion
     }
 
     public class EntityBaseData

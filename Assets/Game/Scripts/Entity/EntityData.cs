@@ -30,11 +30,17 @@ namespace KYapp.Builate
             EntityBase eb = (EntityBase)Activator.CreateInstance(EntityDataList[id].GetType());
             eb.Data = EntityDataList[id].Data;
             Entity entity = new Entity(eb);
-            EntityList.Add(entity.EntityID, entity);
+            
+            AddEntity(entity);
             
             entity.EntityBase.Start();
 
             return entity;
+        }
+
+        public static void AddEntity(Entity entity)
+        {
+            EntityList.Add(entity.EntityID, entity);
         }
 
         public static void Update()

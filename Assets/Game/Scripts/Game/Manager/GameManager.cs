@@ -9,6 +9,7 @@ namespace KYapp.Builate
 {
     public class GameManager : Singleton<GameManager>
     {
+        public bool load;
         void Start()
         {
             DebugModLoad();
@@ -28,7 +29,14 @@ namespace KYapp.Builate
             SystemMod sysmod = new SystemMod();
             sysmod.Init();
             ModLoader.SetEntityData(sysmod);
-            sysmod.Start();
+            if (load)
+            {
+                SaveLoad.Load();
+            }
+            else
+            {
+                sysmod.Start();
+            }
         }
     }
 }
