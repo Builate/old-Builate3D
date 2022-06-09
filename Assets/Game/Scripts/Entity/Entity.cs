@@ -9,7 +9,6 @@ namespace KYapp.Builate
     {
         public Guid EntityID;
         public EntityBase EntityBase;
-        private bool IsStart = true;
 
         public Entity(EntityBase entitybase, string name = "")
         {
@@ -49,15 +48,7 @@ namespace KYapp.Builate
 
         public void Update()
         {
-            if (IsStart)
-            {
-                EntityBase.Start();
-                IsStart = false;
-            }
-            else
-            {
-                EntityBase.Update();
-            }
+            EntityBase.Update();
         }
     }
 

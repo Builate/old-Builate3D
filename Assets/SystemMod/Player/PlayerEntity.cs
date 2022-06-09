@@ -27,7 +27,7 @@ namespace KYapp.Builate
             cc.center = new Vector3(0, 0, 0);
             cc.radius = 0.5f;
             cc.height = 2;
-
+            
             pc.WalkSpeed = 7;
             pc.DushSpeed = 14;
             pc.GravityScale = 40f;

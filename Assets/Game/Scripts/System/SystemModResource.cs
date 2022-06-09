@@ -6,4 +6,5 @@ public class SystemModResource : Singleton<SystemModResource>
 {
     public GameObject PlayerModelPrefab;
     public GameObject PlayerCam1;
+    public GameObject TestEntity;
 }

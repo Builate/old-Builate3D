@@ -14,7 +14,8 @@ namespace KYapp.Builate
 
         public override void Start()
         {
-            
+            GameObject.Destroy(gameObject);
+            gameObject = GameObject.Instantiate(SystemModResource.Instance.TestEntity);
         }
 
         public override void Update()

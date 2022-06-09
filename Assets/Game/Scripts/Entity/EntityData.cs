@@ -31,6 +31,8 @@ namespace KYapp.Builate
             eb.Data = EntityDataList[id].Data;
             Entity entity = new Entity(eb);
             EntityList.Add(entity.EntityID, entity);
+            
+            entity.EntityBase.Start();
 
             return entity;
         }

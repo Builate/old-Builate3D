@@ -55,7 +55,8 @@ namespace KYapp.Builate
             if (Input.GetMouseButtonDown(0) &&
                 Physics.Raycast(pointRay,out var hit))
             {
-                
+                Entity testEntity = EntityData.CreateEntity(("SystemMod", 2));
+                testEntity.EntityBase.gameObject.transform.position = hit.point;
             }
 
             #endregion
