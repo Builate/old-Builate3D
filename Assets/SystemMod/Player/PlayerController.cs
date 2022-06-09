@@ -55,13 +55,18 @@ namespace KYapp.Builate
             if (Input.GetMouseButtonDown(0) &&
                 Physics.Raycast(pointRay,out var hit))
             {
-                Entity testEntity = EntityData.CreateEntity(("SystemMod", 2));
-                testEntity.EntityBase.gameObject.transform.position = hit.point;
+                SetEntity(hit.point, 2);
             }
 
             #endregion
             
             cc.Move(MoveVec * (Input.GetKey(KeyCode.LeftShift) ? DushSpeed : WalkSpeed) * Time.deltaTime + Velocity * Time.deltaTime);
+        }
+
+        private void SetEntity(Vector3 position,int entityID)
+        {
+            Entity testEntity = EntityData.CreateEntity(("SystemMod", entityID));
+            testEntity.EntityBase.gameObject.transform.position = position;
         }
     }
 }
