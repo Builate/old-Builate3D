@@ -11,6 +11,8 @@ namespace KYapp.Builate
         CameraEntity,
         [EntityData(typeof(PlayerEntity), "Player")]
         PlayerEntity,
+        [EntityData(typeof(TestEntity), "TestEntity")]
+        TestEntity,
     }
 
     public class SystemMod : Mod

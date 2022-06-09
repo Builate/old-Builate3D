@@ -49,8 +49,18 @@ namespace KYapp.Builate
             }
             #endregion
 
+            #region ê›íu
+
+            Ray pointRay = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f));
+            if (Input.GetMouseButtonDown(0) &&
+                Physics.Raycast(pointRay,out var hit))
+            {
+                
+            }
+
+            #endregion
+            
             cc.Move(MoveVec * (Input.GetKey(KeyCode.LeftShift) ? DushSpeed : WalkSpeed) * Time.deltaTime + Velocity * Time.deltaTime);
         }
     }
-
 }
