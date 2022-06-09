@@ -16,7 +16,3 @@ Buiateとはキャップによって開発されているキャップによる�
 コメントが可能なので指摘や提案などがあったらぜひお願いします。  
 [notion](https://kyapp.notion.site/Builate-b36d534175124f7d9833cef119c16d1d)  
 [discord](https://discord.gg/jcX6JhSSkK)
-
-## OSS表記
-
-[LiteNetLib](https://github.com/RevenantX/LiteNetLib)
