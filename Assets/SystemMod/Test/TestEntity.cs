@@ -26,6 +26,10 @@ namespace KYapp.Builate
         public override void Deserialize(DataReader dataReader)
         {
             D_Transform(dataReader.GetBytes());
+            Vector3 pos = gameObject.transform.position;
+            GameObject.Destroy(gameObject);
+            gameObject = GameObject.Instantiate(SystemModResource.Instance.TestEntity);
+            gameObject.transform.position = pos;
         }
         public override DataWriter Serialize()
         {
