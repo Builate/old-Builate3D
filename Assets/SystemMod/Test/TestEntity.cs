@@ -9,13 +9,14 @@ namespace KYapp.Builate
     {
         public override void Init()
         {
-
+            
         }
 
         public override void Start()
         {
-            GameObject.Destroy(gameObject);
-            gameObject = GameObject.Instantiate(SystemModResource.Instance.TestEntity);
+            GameObject go = GameObject.Instantiate(SystemModResource.Instance.TestEntity);
+            go.transform.parent = gameObject.transform;
+            go.transform.localPosition = Vector3.zero;
         }
 
         public override void Update()
@@ -26,10 +27,9 @@ namespace KYapp.Builate
         public override void Deserialize(DataReader dataReader)
         {
             D_Transform(dataReader.GetBytes());
-            Vector3 pos = gameObject.transform.position;
-            GameObject.Destroy(gameObject);
-            gameObject = GameObject.Instantiate(SystemModResource.Instance.TestEntity);
-            gameObject.transform.position = pos;
+            GameObject go = GameObject.Instantiate(SystemModResource.Instance.TestEntity);
+            go.transform.parent = gameObject.transform;
+            go.transform.localPosition = Vector3.zero;
         }
         public override DataWriter Serialize()
         {

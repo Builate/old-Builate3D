@@ -31,10 +31,13 @@ namespace KYapp.Builate
 
             int c = EntityData.EntityList.Count;
 
+            Debug.Log(c);
+            
             dataWriter.Put(c);
             for (int i = 0; i < c; i++)
             {
                 Entity entity = EntityData.EntityList[EntityData.EntityList.Keys.ToArray()[i]];
+                Debug.Log(entity.EntityBase.gameObject.transform.position);
                 dataWriter.Put(entity.EntityBase.Data.EntityDataID.Item1);
                 dataWriter.Put(entity.EntityBase.Data.EntityDataID.Item2);
                 dataWriter.Put(entity.EntityID.ToByteArray());
@@ -51,14 +54,19 @@ namespace KYapp.Builate
             DataReader dataReader = new DataReader(BytesLoad(GetPath("test.BuilateEntityData")));
 
             int c = dataReader.GetInt();
-            
             for (int i = 0; i < c; i++)
             {
                 (string, int) id;
                 id.Item1 = dataReader.GetString();
                 id.Item2 = dataReader.GetInt();
+                
+                
                 Guid entityID = new Guid(dataReader.GetBytes());
-                Entity entity = new Entity(EntityData.EntityDataList[id], entityID);
+                
+                
+                EntityBase eb = (EntityBase)Activator.CreateInstance(EntityData.EntityDataList[id].GetType());
+                eb.Data = EntityData.EntityDataList[id].Data;
+                Entity entity = new Entity(eb, entityID);
                 entity.EntityBase.Deserialize(new DataReader(dataReader.GetBytes()));
                 EntityData.AddEntity(entity);
             }

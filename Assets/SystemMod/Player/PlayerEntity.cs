@@ -14,7 +14,6 @@ namespace KYapp.Builate
         }
         public override void Start()
         {
-            Debug.Log("aaaaaa");
             SetComponent();
             gameObject.transform.position = new Vector3(0, 10, 0);
         }
