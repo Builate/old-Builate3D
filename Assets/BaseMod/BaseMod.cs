@@ -6,8 +6,7 @@ namespace KYapp.Builate
 {
     public enum BaseModEntityData
     {
-        [EntityData(typeof(ConveyorEntity),"Conveyor")]
-        Conveyor
+        
     }
     
     public class BaseMod : Mod

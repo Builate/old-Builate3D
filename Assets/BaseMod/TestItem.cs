@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace KYapp.Builate
 {
-    public interface IItemIO
+    public class TestItem : EntityBase
     {
-        public bool ItemIn(Item item);
+        
     }
 }

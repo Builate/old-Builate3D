@@ -16,35 +16,50 @@ namespace KYapp.Builate
         /// <summary>
         /// 全てのブロックで共有されるべきデータはEntityBaseDataを継承してこのDataに代入してください。
         /// </summary>
-        public EntityBaseData Data = new EntityBaseData();
+        public EntityBaseData Data;
 
         /// <summary>
         /// EntityDataList追加時に呼ばれます。
         /// mesh,materialの設定などゲーム起動時に行いたい処理を書いてください。
         /// </summary>
-        public abstract void Init();
+        public virtual void Init()
+        {
+            
+        }
 
         /// <summary>
         /// entityの出現時に一度だけ呼ばれます。
         /// UnityのStart関数と同じように考えてください。
         /// </summary>
-        public abstract void Start();
+        public virtual void Start()
+        {
+            
+        }
 
         /// <summary>
         /// entity出現後毎フレーム呼ばれます。
         /// UnityのUpdate関数と同じように考えてください。
         /// </summary>
-        public abstract void Update();
+        public virtual void Update()
+        {
+            
+        }
 
         /// <summary>
         /// ネットワーク通信時や、データのロード時に使用するDeserialize関数です。
         /// </summary>
-        public abstract void Deserialize(DataReader dataReader);
+        public virtual void Deserialize(DataReader dataReader)
+        {
+            
+        }
 
         /// <summary>
         /// ネットワーク通信時や、データのセーブ時に使用するSerialize関数です。
         /// </summary>
-        public abstract DataWriter Serialize();
+        public virtual DataWriter Serialize()
+        {
+            return new DataWriter();
+        }
 
         #region SerializeUtility
 

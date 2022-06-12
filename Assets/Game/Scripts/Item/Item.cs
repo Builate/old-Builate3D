@@ -4,17 +4,8 @@ using UnityEngine;
 
 namespace KYapp.Builate
 {
-    public class Item
+    public interface IItem
     {
-        public (string, int) id
-        {
-            get;
-            private set;
-        }
-
-        public Item((string, int) id)
-        {
-            
-        }
+        
     }
 }
