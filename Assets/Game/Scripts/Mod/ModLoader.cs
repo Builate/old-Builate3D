@@ -14,8 +14,9 @@ namespace KYapp.Builate
             for (int i = 0; i < items.Length; i++)
             {
                 EntityDataAttribute eda = items.GetValue(i).GetType().GetField(items.GetValue(i).ToString()).GetCustomAttribute<EntityDataAttribute>();
+                
                 EntityBase a = (EntityBase)eda.type.GetConstructor(Type.EmptyTypes).Invoke(null);
-
+                a.Data = new EntityBaseData();
                 a.Data.EntityDataID.Item2 = i;
                 a.Data.EntityDataID.Item1 = mod.modID;
                 a.Data.mod = mod;

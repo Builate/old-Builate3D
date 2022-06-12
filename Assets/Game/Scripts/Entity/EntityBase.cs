@@ -105,5 +105,9 @@ namespace KYapp.Builate
         /// 親mod
         /// </summary>
         public Mod mod;
+        /// <summary>
+        /// アイテムかどうか
+        /// </summary>
+        public bool IsItem;
     }
 }

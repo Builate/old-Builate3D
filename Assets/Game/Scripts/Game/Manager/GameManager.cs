@@ -26,16 +26,16 @@ namespace KYapp.Builate
 
         public void DebugModLoad()
         {
-            SystemMod sysmod = new SystemMod();
-            sysmod.Init();
-            ModLoader.SetEntityData(sysmod);
+            SystemMod sysMod = new SystemMod();
+            sysMod.Init();
+            ModLoader.SetEntityData(sysMod);
             if (load)
             {
                 SaveLoad.Load();
             }
             else
             {
-                sysmod.Start();
+                sysMod.Start();
             }
         }
     }
