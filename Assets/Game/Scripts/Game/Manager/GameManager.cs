@@ -27,8 +27,11 @@ namespace KYapp.Builate
         public void DebugModLoad()
         {
             SystemMod sysMod = new SystemMod();
+            BaseMod baseMod = new BaseMod();
             sysMod.Init();
+            baseMod.Init();
             ModLoader.SetEntityData(sysMod);
+            ModLoader.SetEntityData(baseMod);
             if (load)
             {
                 SaveLoad.Load();
@@ -36,6 +39,7 @@ namespace KYapp.Builate
             else
             {
                 sysMod.Start();
+                baseMod.Start();
             }
         }
     }

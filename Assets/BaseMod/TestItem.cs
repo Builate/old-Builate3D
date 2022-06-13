@@ -4,8 +4,11 @@ using UnityEngine;
 
 namespace KYapp.Builate
 {
-    public class TestItem : EntityBase
+    public class TestItem : ItemBase
     {
-        
+        public override void Init()
+        {
+            Data.Name = "TestItem";
+        }
     }
 }
