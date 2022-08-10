@@ -1,4 +1,4 @@
-# Builate
+# Builate3D
 
 ## Builateとは
 
